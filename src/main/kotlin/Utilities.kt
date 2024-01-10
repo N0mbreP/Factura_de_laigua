@@ -93,6 +93,41 @@ fun readChar(pMessageIn: String
 
     return outputValue
 }
+/**
+ * This method can be used to read a Char value from the user and return a Boolean
+ * through keyboard using java.util.Scanner
+ * @author raimon.izard
+ * @author pol paredes
+ * @since 15/12/2023
+ * @param pMessageIn Input message to be shown to the user
+ * @param pMessageErrorDT Data type error message to be shown to the user
+ * @return outputValue trueFalse
+ */
+fun readCharReturnBoolean(pMessageIn: String
+             , pMessageErrorDT: String
+): Boolean{
+    var trueFalse:Boolean=false
+    var outputValue: Char = ' '
+    var correctDataType: Boolean = false
+
+    do{
+        println(pMessageIn)
+        correctDataType = scan.hasNext()
+
+        if (!correctDataType){
+            println(RED_BACKGROUND_BRIGHT + "ERROR: " + pMessageErrorDT + RESET)
+        }else{
+            // Get the first character of the input word from scan.next()
+            outputValue = scan.next()[0]
+        }
+        scan.nextLine()
+        if (outputValue.lowercaseChar()=='s') return true
+        else if (outputValue.lowercaseChar()=='n') return false
+        correctDataType=false
+        println(RED_BACKGROUND_BRIGHT + "ERROR: " + pMessageErrorDT + RESET)
+    }while(!correctDataType)
+    return false
+}
 
 /**
  * This method can be used to read a Char value from the user through keyboard using java.util.Scanner. It can force the output Char to be lower or uppercase
